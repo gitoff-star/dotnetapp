@@ -8,7 +8,7 @@ namespace dotnetapp.Models
         public int Id { get; set; }
 
         [Required]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         public DateTime CreateDateTime { get; set; } = DateTime.Now;
 
