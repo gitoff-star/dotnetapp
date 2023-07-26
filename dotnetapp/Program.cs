@@ -1,12 +1,15 @@
 
 using dotnetapp.Data;
 using Microsoft.AspNetCore.Hosting.Builder;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<ApplicationDBContext>();  //adding service will allow
+builder.Services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(
+    builder.Configuration.GetConnectionString("DefaultConnection")
+    ))  ;  //adding service will allow
                                                         //to use dbcontext and connect with connectionstring with DB
 var app = builder.Build();
 
